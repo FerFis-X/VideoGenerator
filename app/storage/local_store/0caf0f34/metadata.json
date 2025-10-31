@@ -1,0 +1,31 @@
+{
+  "latex": "x**2 - 5*x + 6 = 0",
+  "solution": [
+    "x = 2",
+    "x = 3"
+  ],
+  "steps": [
+    {
+      "index": 1,
+      "latex_before": "x**2 - 5*x + 6 = 0",
+      "latex_after": "(x - 3)*(x - 2) = 0",
+      "rule": "factorizaci\u00f3n",
+      "narration": "Factorizamos el trinomio en dos binomios."
+    },
+    {
+      "index": 2,
+      "latex_before": "(x - 3)*(x - 2) = 0",
+      "latex_after": "x=2 o x=3",
+      "rule": "propiedad del producto nulo",
+      "narration": "Si un producto es cero, uno de los factores debe anularse."
+    },
+    {
+      "index": 3,
+      "latex_before": "x=2 o x=3",
+      "latex_after": "x = 2, x = 3",
+      "rule": "aislar la variable",
+      "narration": "Resolvemos cada ecuaci\u00f3n lineal para encontrar los valores de la inc\u00f3gnita."
+    }
+  ],
+  "manim_code": "\nfrom manim import *\n\nclass SolutionScene(Scene):\n    def construct(self):\n        title = Text(\"Problema: x**2 - 5*x + 6 = 0\", font_size=36)\n        self.play(Write(title))\n        self.wait(0.5)\n        self.play(FadeOut(title))\n\n        \n        # Paso 1\n        step_1 = Text(\"Paso 1: (x - 3)*(x - 2) = 0\", font_size=32)\n        rule_1 = Text(\"Regla: factorizaci\u00f3n\", font_size=26).next_to(step_1, DOWN)\n        narr_1 = Text(\"Factorizamos el trinomio en dos binomios.\", font_size=24).next_to(rule_1, DOWN)\n        \n\n        # Paso 2\n        step_2 = Text(\"Paso 2: x=2 o x=3\", font_size=32)\n        rule_2 = Text(\"Regla: propiedad del producto nulo\", font_size=26).next_to(step_2, DOWN)\n        narr_2 = Text(\"Si un producto es cero, uno de los factores debe anularse.\", font_size=24).next_to(rule_2, DOWN)\n        \n\n        # Paso 3\n        step_3 = Text(\"Paso 3: x = 2, x = 3\", font_size=32)\n        rule_3 = Text(\"Regla: aislar la variable\", font_size=26).next_to(step_3, DOWN)\n        narr_3 = Text(\"Resolvemos cada ecuaci\u00f3n lineal para encontrar los valores de la inc\u00f3gnita.\", font_size=24).next_to(rule_3, DOWN)\n        \n\n        \n        self.play(Write(step_1))\n        self.play(Write(rule_1))\n        self.play(Write(narr_1))\n        self.wait(0.5)\n        self.play(FadeOut(step_1, rule_1, narr_1))\n        \n\n        self.play(Write(step_2))\n        self.play(Write(rule_2))\n        self.play(Write(narr_2))\n        self.wait(0.5)\n        self.play(FadeOut(step_2, rule_2, narr_2))\n        \n\n        self.play(Write(step_3))\n        self.play(Write(rule_3))\n        self.play(Write(narr_3))\n        self.wait(0.5)\n        self.play(FadeOut(step_3, rule_3, narr_3))\n        \n\n        final_txt = Text(\"Soluci\u00f3n: x = 2 , x = 3\", font_size=36)\n        self.play(Write(final_txt))\n        self.wait(2)\n"
+}

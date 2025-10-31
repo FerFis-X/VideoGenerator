@@ -1,0 +1,243 @@
+Manim Community v0.18.1
+
+[10/30/25 23:14:33] INFO     Writing Problema: x**2 -   tex_file_writing.py:109
+                             5*x + 6 = 0 to                                    
+                             media\Tex\d79f43b7f8b49da1                        
+                             .tex                                              
+[10/30/25 23:14:37] INFO     Animation 0 : Partial     scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\1185818338_                         
+                             876568384_223132457.mp4'                          
+                    INFO     Animation 1 : Partial     scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_3                         
+                             890345977_3496870971.mp4'                         
+                    INFO     Writing Paso 1: (x - 3)*(x tex_file_writing.py:109
+                             - 2) = 0 to                                       
+                             media\Tex\9e3a2f5c0968de86                        
+                             .tex                                              
+[10/30/25 23:14:39] INFO     Writing Regla:             tex_file_writing.py:109
+                             factorización to                                  
+                             media\Tex\d83d5e2380ad9228                        
+                             .tex                                              
+[10/30/25 23:14:40] INFO     Writing Factorizamos el    tex_file_writing.py:109
+                             trinomio en dos binomios.                         
+                             to                                                
+                             media\Tex\431969af823afbc9                        
+                             .tex                                              
+[10/30/25 23:14:42] INFO     Writing Paso 2: x=2 o x=3  tex_file_writing.py:109
+                             to                                                
+                             media\Tex\c604f0fb75a062cb                        
+                             .tex                                              
+[10/30/25 23:14:44] INFO     Writing Regla: propiedad   tex_file_writing.py:109
+                             del producto nulo to                              
+                             media\Tex\694b02192e821aea                        
+                             .tex                                              
+[10/30/25 23:14:45] INFO     Writing Si un producto es  tex_file_writing.py:109
+                             cero, uno de los factores                         
+                             debe anularse. to                                 
+                             media\Tex\77daa29516ec7cbf                        
+                             .tex                                              
+[10/30/25 23:14:47] INFO     Writing Paso 3: x = 2, x = tex_file_writing.py:109
+                             3 to                                              
+                             media\Tex\af1ccfa2384afa64                        
+                             .tex                                              
+[10/30/25 23:14:49] INFO     Writing Regla: aislar la   tex_file_writing.py:109
+                             variable to                                       
+                             media\Tex\ddeff0347ce585e3                        
+                             .tex                                              
+[10/30/25 23:14:50] INFO     Writing Resolvemos cada    tex_file_writing.py:109
+                             ecuación lineal para                              
+                             encontrar los valores de                          
+                             la incógnita. to                                  
+                             media\Tex\08a90f4f6b7f146a                        
+                             .tex                                              
+[10/30/25 23:14:53] INFO     Animation 2 : Partial     scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_3                         
+                             189393382_1554419959.mp4'                         
+                    INFO     Animation 3 : Partial     scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_3                         
+                             170293997_4131132508.mp4'                         
+[10/30/25 23:14:54] INFO     Animation 4 : Partial     scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_1                         
+                             406455688_1419851.mp4'                            
+[10/30/25 23:14:56] INFO     Animation 5 : Partial     scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_3                         
+                             998888662_568172717.mp4'                          
+                    INFO     Animation 6 : Partial     scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_3                         
+                             890345977_983323089.mp4'                          
+[10/30/25 23:14:57] INFO     Animation 7 : Partial     scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_1                         
+                             370667668_574630669.mp4'                          
+[10/30/25 23:14:58] INFO     Animation 8 : Partial     scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_1                         
+                             21221931_758497372.mp4'                           
+[10/30/25 23:14:59] INFO     Animation 9 : Partial     scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_2                         
+                             681717417_861680511.mp4'                          
+[10/30/25 23:15:00] INFO     Animation 10 : Partial    scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_3                         
+                             68289664_2085379337.mp4'                          
+[10/30/25 23:15:01] INFO     Animation 11 : Partial    scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_3                         
+                             890345977_1576758120.mp4'                         
+[10/30/25 23:15:02] INFO     Animation 12 : Partial    scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_1                         
+                             335955321_3225202723.mp4'                         
+[10/30/25 23:15:03] INFO     Animation 13 : Partial    scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_3                         
+                             395847483_648508397.mp4'                          
+[10/30/25 23:15:04] INFO     Animation 14 : Partial    scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_5                         
+                             66214329_1759198921.mp4'                          
+[10/30/25 23:15:06] INFO     Animation 15 : Partial    scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_3                         
+                             70426450_1166770959.mp4'                          
+                    INFO     Animation 16 : Partial    scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_3                         
+                             890345977_1578157385.mp4'                         
+[10/30/25 23:15:08] INFO     Animation 17 : Partial    scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_5                         
+                             19800125_1440186541.mp4'                          
+                    INFO     Writing Solución: x = 2 ,  tex_file_writing.py:109
+                             x = 3 to                                          
+                             media\Tex\085e1b048ba9ad38                        
+                             .tex                                              
+[10/30/25 23:15:10] INFO     Animation 18 : Partial    scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_1                         
+                             02986025_2353627841.mp4'                          
+[10/30/25 23:15:11] INFO     Animation 19 : Partial    scene_file_writer.py:527
+                             movie file written in                             
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\partial_movie_files\                         
+                             SolutionScene\624642324_1                         
+                             141282389_1508969494.mp4'                         
+                    INFO     Combining to Movie file.  scene_file_writer.py:617
+                    INFO                               scene_file_writer.py:737
+                             File ready at                                     
+                             'C:\Users\FerFisX\Desktop                         
+                             \VideoGenerator\app\stora                         
+                             ge\local_store\07a01fa7\m                         
+                             edia\videos\manim_code\48                         
+                             0p15\video.mp4'                                   
+                                                                               
+                    INFO     Rendered SolutionScene                scene.py:247
+                             Played 20 animations                              
+You are using manim version v0.18.1, but version v0.19.0 is available.
+You should consider upgrading via pip install -U manim

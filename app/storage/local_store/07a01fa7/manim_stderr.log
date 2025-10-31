@@ -1,0 +1,96 @@
+
+Animation 0: Write(Tex('Problema: x**2 - 5*x + 6 = 0')):   0%|          | 0/30 [00:00<?, ?it/s]
+Animation 0: Write(Tex('Problema: x**2 - 5*x + 6 = 0')):  23%|##3       | 7/30 [00:00<00:00, 67.01it/s]
+Animation 0: Write(Tex('Problema: x**2 - 5*x + 6 = 0')):  50%|#####     | 15/30 [00:00<00:00, 70.02it/s]
+Animation 0: Write(Tex('Problema: x**2 - 5*x + 6 = 0')):  73%|#######3  | 22/30 [00:00<00:00, 68.66it/s]
+Animation 0: Write(Tex('Problema: x**2 - 5*x + 6 = 0')): 100%|##########| 30/30 [00:00<00:00, 71.29it/s]
+                                                                                                        
+
+Animation 2: FadeOut(Tex('Problema: x**2 - 5*x + 6 = 0')):   0%|          | 0/15 [00:00<?, ?it/s]
+Animation 2: FadeOut(Tex('Problema: x**2 - 5*x + 6 = 0')):  60%|######    | 9/15 [00:00<00:00, 81.44it/s]
+                                                                                                         
+
+Animation 3: Write(Tex('Paso 1: (x - 3)*(x - 2) = 0')):   0%|          | 0/30 [00:00<?, ?it/s]
+Animation 3: Write(Tex('Paso 1: (x - 3)*(x - 2) = 0')):  27%|##6       | 8/30 [00:00<00:00, 73.25it/s]
+Animation 3: Write(Tex('Paso 1: (x - 3)*(x - 2) = 0')):  53%|#####3    | 16/30 [00:00<00:00, 75.90it/s]
+Animation 3: Write(Tex('Paso 1: (x - 3)*(x - 2) = 0')):  87%|########6 | 26/30 [00:00<00:00, 84.14it/s]
+                                                                                                       
+
+Animation 4: Write(Tex('Regla: factorización')):   0%|          | 0/30 [00:00<?, ?it/s]
+Animation 4: Write(Tex('Regla: factorización')):  27%|##6       | 8/30 [00:00<00:00, 75.50it/s]
+Animation 4: Write(Tex('Regla: factorización')):  53%|#####3    | 16/30 [00:00<00:00, 73.56it/s]
+Animation 4: Write(Tex('Regla: factorización')):  80%|########  | 24/30 [00:00<00:00, 74.70it/s]
+                                                                                                
+
+Animation 5: Write(Tex('Factorizamos el trinomio en dos binomios.')):   0%|          | 0/30 [00:00<?, ?it/s]
+Animation 5: Write(Tex('Factorizamos el trinomio en dos binomios.')):  20%|##        | 6/30 [00:00<00:00, 54.55it/s]
+Animation 5: Write(Tex('Factorizamos el trinomio en dos binomios.')):  40%|####      | 12/30 [00:00<00:00, 51.23it/s]
+Animation 5: Write(Tex('Factorizamos el trinomio en dos binomios.')):  60%|######    | 18/30 [00:00<00:00, 48.75it/s]
+Animation 5: Write(Tex('Factorizamos el trinomio en dos binomios.')):  80%|########  | 24/30 [00:00<00:00, 51.27it/s]
+                                                                                                                     
+
+Animation 7: FadeOut(Group):   0%|          | 0/15 [00:00<?, ?it/s]
+Animation 7: FadeOut(Group):  27%|##6       | 4/15 [00:00<00:00, 35.00it/s]
+Animation 7: FadeOut(Group):  53%|#####3    | 8/15 [00:00<00:00, 34.71it/s]
+Animation 7: FadeOut(Group):  80%|########  | 12/15 [00:00<00:00, 34.84it/s]
+                                                                            
+
+Animation 8: Write(Tex('Paso 2: x=2 o x=3')):   0%|          | 0/15 [00:00<?, ?it/s]
+Animation 8: Write(Tex('Paso 2: x=2 o x=3')):  47%|####6     | 7/15 [00:00<00:00, 68.74it/s]
+                                                                                            
+
+Animation 9: Write(Tex('Regla: propiedad del producto nulo')):   0%|          | 0/30 [00:00<?, ?it/s]
+Animation 9: Write(Tex('Regla: propiedad del producto nulo')):  23%|##3       | 7/30 [00:00<00:00, 63.80it/s]
+Animation 9: Write(Tex('Regla: propiedad del producto nulo')):  47%|####6     | 14/30 [00:00<00:00, 63.45it/s]
+Animation 9: Write(Tex('Regla: propiedad del producto nulo')):  70%|#######   | 21/30 [00:00<00:00, 61.94it/s]
+Animation 9: Write(Tex('Regla: propiedad del producto nulo')):  93%|#########3| 28/30 [00:00<00:00, 61.97it/s]
+                                                                                                              
+
+Animation 10: Write(Tex('Si un producto es cero, uno de los factores debe anularse.')):   0%|          | 0/30 [00:00<?, ?it/s]
+Animation 10: Write(Tex('Si un producto es cero, uno de los factores debe anularse.')):  17%|#6        | 5/30 [00:00<00:00, 40.64it/s]
+Animation 10: Write(Tex('Si un producto es cero, uno de los factores debe anularse.')):  33%|###3      | 10/30 [00:00<00:00, 41.73it/s]
+Animation 10: Write(Tex('Si un producto es cero, uno de los factores debe anularse.')):  50%|#####     | 15/30 [00:00<00:00, 41.26it/s]
+Animation 10: Write(Tex('Si un producto es cero, uno de los factores debe anularse.')):  67%|######6   | 20/30 [00:00<00:00, 42.72it/s]
+Animation 10: Write(Tex('Si un producto es cero, uno de los factores debe anularse.')):  83%|########3 | 25/30 [00:00<00:00, 41.55it/s]
+Animation 10: Write(Tex('Si un producto es cero, uno de los factores debe anularse.')): 100%|##########| 30/30 [00:00<00:00, 42.28it/s]
+                                                                                                                                       
+
+Animation 12: FadeOut(Group):   0%|          | 0/15 [00:00<?, ?it/s]
+Animation 12: FadeOut(Group):  27%|##6       | 4/15 [00:00<00:00, 31.32it/s]
+Animation 12: FadeOut(Group):  53%|#####3    | 8/15 [00:00<00:00, 32.10it/s]
+Animation 12: FadeOut(Group):  80%|########  | 12/15 [00:00<00:00, 30.84it/s]
+                                                                             
+
+Animation 13: Write(Tex('Paso 3: x = 2, x = 3')):   0%|          | 0/15 [00:00<?, ?it/s]
+Animation 13: Write(Tex('Paso 3: x = 2, x = 3')):  40%|####      | 6/15 [00:00<00:00, 59.10it/s]
+                                                                                                
+
+Animation 14: Write(Tex('Regla: aislar la variable')):   0%|          | 0/30 [00:00<?, ?it/s]
+Animation 14: Write(Tex('Regla: aislar la variable')):  27%|##6       | 8/30 [00:00<00:00, 75.37it/s]
+Animation 14: Write(Tex('Regla: aislar la variable')):  53%|#####3    | 16/30 [00:00<00:00, 68.79it/s]
+Animation 14: Write(Tex('Regla: aislar la variable')):  77%|#######6  | 23/30 [00:00<00:00, 69.04it/s]
+                                                                                                      
+
+Animation 15: Write(Tex('Resolvemos cada ecuación lineal para encontrar los valores de la incógnita.')):   0%|          | 0/30 [00:00<?, ?it/s]
+Animation 15: Write(Tex('Resolvemos cada ecuación lineal para encontrar los valores de la incógnita.')):  13%|#3        | 4/30 [00:00<00:00, 37.63it/s]
+Animation 15: Write(Tex('Resolvemos cada ecuación lineal para encontrar los valores de la incógnita.')):  27%|##6       | 8/30 [00:00<00:00, 38.47it/s]
+Animation 15: Write(Tex('Resolvemos cada ecuación lineal para encontrar los valores de la incógnita.')):  40%|####      | 12/30 [00:00<00:00, 37.34it/s]
+Animation 15: Write(Tex('Resolvemos cada ecuación lineal para encontrar los valores de la incógnita.')):  53%|#####3    | 16/30 [00:00<00:00, 37.00it/s]
+Animation 15: Write(Tex('Resolvemos cada ecuación lineal para encontrar los valores de la incógnita.')):  67%|######6   | 20/30 [00:00<00:00, 35.71it/s]
+Animation 15: Write(Tex('Resolvemos cada ecuación lineal para encontrar los valores de la incógnita.')):  80%|########  | 24/30 [00:00<00:00, 36.75it/s]
+Animation 15: Write(Tex('Resolvemos cada ecuación lineal para encontrar los valores de la incógnita.')):  93%|#########3| 28/30 [00:00<00:00, 36.11it/s]
+                                                                                                                                                        
+
+Animation 17: FadeOut(Group):   0%|          | 0/15 [00:00<?, ?it/s]
+Animation 17: FadeOut(Group):  20%|##        | 3/15 [00:00<00:00, 26.57it/s]
+Animation 17: FadeOut(Group):  40%|####      | 6/15 [00:00<00:00, 28.35it/s]
+Animation 17: FadeOut(Group):  60%|######    | 9/15 [00:00<00:00, 28.97it/s]
+Animation 17: FadeOut(Group):  80%|########  | 12/15 [00:00<00:00, 28.84it/s]
+Animation 17: FadeOut(Group): 100%|##########| 15/15 [00:00<00:00, 27.31it/s]
+                                                                             
+
+Animation 18: Write(Tex('Solución: x = 2 , x = 3')):   0%|          | 0/30 [00:00<?, ?it/s]
+Animation 18: Write(Tex('Solución: x = 2 , x = 3')):  30%|###       | 9/30 [00:00<00:00, 84.35it/s]
+Animation 18: Write(Tex('Solución: x = 2 , x = 3')):  63%|######3   | 19/30 [00:00<00:00, 91.16it/s]
+Animation 18: Write(Tex('Solución: x = 2 , x = 3')):  97%|#########6| 29/30 [00:00<00:00, 88.69it/s]
+                                                                                                    

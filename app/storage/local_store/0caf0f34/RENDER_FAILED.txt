@@ -1,0 +1,1 @@
+Manim no generó el video. Revisa manim_stdout.log y manim_stderr.log
