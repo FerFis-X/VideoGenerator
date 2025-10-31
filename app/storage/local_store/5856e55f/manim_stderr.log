@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\FerFisX\Desktop\VideoGenerator\env\Scripts\manim.exe\__main__.py", line 6, in <module>
+  File "C:\Users\FerFisX\Desktop\VideoGenerator\env\Lib\site-packages\click\core.py", line 1462, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\FerFisX\Desktop\VideoGenerator\env\Lib\site-packages\click\core.py", line 1383, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "C:\Users\FerFisX\Desktop\VideoGenerator\env\Lib\site-packages\click\core.py", line 1850, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\FerFisX\Desktop\VideoGenerator\env\Lib\site-packages\click\core.py", line 1246, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\FerFisX\Desktop\VideoGenerator\env\Lib\site-packages\click\core.py", line 814, in invoke
+    return callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\FerFisX\Desktop\VideoGenerator\env\Lib\site-packages\manim\cli\render\commands.py", line 116, in render
+    for SceneClass in scene_classes_from_file(file):
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\FerFisX\Desktop\VideoGenerator\env\Lib\site-packages\manim\utils\module_ops.py", line 131, in scene_classes_from_file
+    module = get_module(file_path)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\FerFisX\Desktop\VideoGenerator\env\Lib\site-packages\manim\utils\module_ops.py", line 57, in get_module
+    raise FileNotFoundError(f"{file_name} not found")
+FileNotFoundError: C:\Users\FerFisX\Desktop\VideoGenerator\app\storage\local_store\5856e55f\app\storage\local_store\5856e55f\manim_code.py not found

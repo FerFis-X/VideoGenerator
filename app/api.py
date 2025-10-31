@@ -1,4 +1,4 @@
-# app/api.py
+# app/api.py (solo referencia)
 from fastapi import APIRouter
 from .models import SolveRequest, SolveResponse, Step
 from .services.sympy_solver import solve_problem
@@ -12,19 +12,14 @@ router = APIRouter()
 
 @router.post("/solve", response_model=SolveResponse)
 def solve_endpoint(payload: SolveRequest):
-    # 1. Resolver con SymPy (dummy por ahora)
     solver_output = solve_problem(
         problem_text=payload.problem_text,
         input_format=payload.input_format
     )
 
-    # 2. Generar pasos
     steps_raw = build_steps(solver_output, locale=payload.locale)
-
-    # 3. Opcionalmente pulir narración
     steps_polished = polish_steps(steps_raw, locale=payload.locale)
 
-    # 4. Generar código Manim
     manim_code = generate_manim_code(
         latex_problem=solver_output["latex_clean"],
         steps=steps_polished,
@@ -33,10 +28,10 @@ def solve_endpoint(payload: SolveRequest):
         locale=payload.locale
     )
 
-    # 5. Renderizar video (por ahora fake)
-    video_path, job_id = render_video(manim_code)
+    # 👇 ahora sí intenta renderizar de verdad
+    video_path, job_id = render_video(manim_code, scene_name="SolutionScene", quality="l")
 
-    # 6. Guardar artefactos en disco
+    # guardar artefactos
     save_artifacts(
         job_id=job_id,
         latex=solver_output["latex_clean"],
@@ -45,7 +40,6 @@ def solve_endpoint(payload: SolveRequest):
         manim_code=manim_code
     )
 
-    # 7. Armar respuesta
     return SolveResponse(
         job_id=job_id,
         status="done",
