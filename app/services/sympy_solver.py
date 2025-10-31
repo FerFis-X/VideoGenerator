@@ -1,24 +1,62 @@
 # app/services/sympy_solver.py
-from typing import Dict, List, Tuple, Union
+from typing import Dict, List, Tuple
+import re
 from sympy import symbols, Eq, sympify, solve, factor, simplify
 from sympy.parsing.latex import parse_latex
 from sympy.core.relational import Relational
+from sympy.core.sympify import SympifyError
+
+
+def _normalize_plaintext_expr(expr_text: str) -> str:
+    """
+    Limpia una expresión matemática escrita estilo humano para que SymPy la entienda.
+    Hace:
+    - reemplaza ^ por ** (potencia)
+    - inserta * en casos como 5x -> 5*x
+    - inserta * en 5(x+1) -> 5*(x+1)
+    - inserta * en )(
+        (x-2)(x-3) -> (x-2)*(x-3)
+    - inserta * en x(x+1) -> x*(x+1)
+
+    Nota: esto es heurístico, pero suficiente para álgebra básica MVP.
+    """
+
+    s = expr_text.strip()
+
+    # potencia estilo humano -> python
+    s = s.replace("^", "**")
+
+    # )(
+    # ejemplo: (x-2)(x-3)  -> (x-2)*(x-3)
+    s = re.sub(r"\)\s*\(", ")*(", s)
+
+    # número seguido de variable: 5x -> 5*x
+    # (\d)  ( [a-zA-Z] )
+    s = re.sub(r"(\d)([a-zA-Z])", r"\1*\2", s)
+
+    # variable seguida de paréntesis: x( -> x*(
+    s = re.sub(r"([a-zA-Z])\s*\(", r"\1*(", s)
+
+    # número seguido de paréntesis: 2( -> 2*(
+    s = re.sub(r"(\d)\s*\(", r"\1*(", s)
+
+    return s
 
 
 def _to_equation(expr_text: str, input_format: str) -> Tuple[Eq, List[str]]:
     """
-    Convierte el texto del usuario en una ecuación SymPy Eq(lhs, rhs)
-    y devuelve también una lista con los símbolos detectados (variables).
+    Convierte el texto/LaTeX del usuario a una ecuación SymPy Eq(lhs, rhs).
+    Devuelve:
+      - equation: Eq(lhs, rhs)
+      - symbols_used: lista de nombres de variables detectadas (["x"], etc.)
 
-    Regla básica:
-    - Si hay un "=", separamos en lhs y rhs.
-    - Si no hay "=", asumimos "= 0".
+    Reglas:
+    - Si hay '=', separamos lhs y rhs.
+    - Si no hay '=', asumimos "= 0".
     """
 
     if input_format.lower() == "latex":
-        # Intentar parsear LaTeX a expresión simbólica
-        # OJO: si viene con '=', parse_latex no va a partir automáticamente,
-        # así que hacemos split manual, luego parse_latex a cada lado.
+        # Para LaTeX, hacemos split manual si trae '='
         if "=" in expr_text:
             left_txt, right_txt = expr_text.split("=", 1)
             lhs = parse_latex(left_txt)
@@ -27,75 +65,77 @@ def _to_equation(expr_text: str, input_format: str) -> Tuple[Eq, List[str]]:
             lhs = parse_latex(expr_text)
             rhs = 0
     else:
-        # input_format == "text"
-        # sympify entiende strings matemáticos tipo "x^2 - 5*x + 6"
-        # pero en Python el exponente es **, no ^. Vamos a reemplazar ^ -> **.
-        fixed = expr_text.replace("^", "**")
+        # input_format == "text" (o cualquier otra cosa que no sea latex)
+        fixed = _normalize_plaintext_expr(expr_text)
 
         if "=" in fixed:
             left_txt, right_txt = fixed.split("=", 1)
+        else:
+            left_txt, right_txt = fixed, "0"
+
+        try:
             lhs = sympify(left_txt)
             rhs = sympify(right_txt)
-        else:
-            lhs = sympify(fixed)
-            rhs = sympify("0")
+        except SympifyError as e:
+            raise ValueError(
+                f"No pude interpretar la expresión matemática: '{expr_text}'. "
+                f"Intenté normalizarla como '{fixed}' y aún así SymPy no la aceptó."
+            ) from e
 
-    # Detectar símbolos variables (ej: x, y, etc.)
+    # detectar símbolos
     symbols_used = list(map(str, (lhs.free_symbols | getattr(rhs, "free_symbols", set()))))
 
-    # Crear Eq(lhs, rhs)
+    # construir ecuación simbólica
     equation = Eq(lhs, rhs)
     return equation, symbols_used
 
 
-def _solve_equation(eq: Eq, vars_candidates: List[str]) -> List:
+def _solve_equation(eq: Eq, vars_candidates: List[str]) -> List[Relational]:
     """
-    Resuelve la ecuación simbólica para las variables.
-    Estrategia:
-    - Si hay una sola variable candidata (ej. ['x']), resolvemos para esa.
-    - Si hay varias, intentamos la primera por simplicidad MVP.
+    Resuelve la ecuación para la primera variable candidata.
+    Retorna lista de ecuaciones tipo Eq(x, 2), Eq(x, 3), etc.
     """
     if len(vars_candidates) == 0:
-        # sin variables? raro, devolvemos lista vacía
         return []
 
+    # primera variable como principal
     main_var = symbols(vars_candidates[0])
     sols = solve(eq, main_var, dict=False)
 
-    # solve puede devolver:
-    # - una lista de valores [2, 3]
-    # - una lista de ecuaciones tipo [Eq(x,2), Eq(x,3)]
-    # vamos a normalizar a Eq(x, value) para consistencia interna
     normalized = []
     for s in sols:
         if isinstance(s, Relational):
             normalized.append(s)
         else:
+            # si es un número/expresión, lo envolvemos en Eq(var, value)
             normalized.append(Eq(main_var, s))
 
     return normalized
 
 
-def _validate_solutions(eq: Eq, solutions: List[Eq]) -> bool:
+def _validate_solutions(eq: Eq, solutions: List[Relational]) -> bool:
     """
-    Valida sustituyendo cada solución en la ecuación original.
-    Para ecuaciones algebraicas simples, basta evaluar lhs - rhs.
-    Si TODAS cuadran => True, si alguna falla => False.
+    Valida sustituyendo las soluciones en la ecuación original.
+    Si TODAS cumplen -> True. Si alguna no, -> False.
     """
     lhs = eq.lhs
     rhs = eq.rhs
 
     for sol in solutions:
-        # sol es tipo Eq(x, 2)
         if not isinstance(sol, Relational):
-            # no es Eq(...)? saltamos validación estricta
             continue
 
-        var = list(sol.free_symbols)[0]  # ej. x
-        value = sol.rhs                 # ej. 2
+        # sol: Eq(x, 2)
+        var_symbols = list(sol.free_symbols)
+        if not var_symbols:
+            continue
 
-        diff = simplify(lhs.subs(var, value) - rhs.subs(var, value))
-        # Debe ser 0 si satisface la ecuación
+        # normalmente es una sola variable, ej x
+        main_var = var_symbols[0]
+        value = sol.rhs
+
+        diff = simplify(lhs.subs(main_var, value) - rhs.subs(main_var, value))
+        # si no da 0 exacto -> no validado
         if diff != 0:
             return False
 
@@ -104,10 +144,8 @@ def _validate_solutions(eq: Eq, solutions: List[Eq]) -> bool:
 
 def _factor_expression(eq: Eq) -> str:
     """
-    Para ayudar al Step Builder, intentamos factorizar lhs - rhs.
-    Ejemplo:
-      x^2 - 5x + 6 = 0  -> (x-2)*(x-3)
-    Retornamos string LaTeX " (x-2)(x-3)=0 " si se ve diferente.
+    Intenta factorizar lhs - rhs.
+    Devuelve string estilo "(x - 2)*(x - 3) = 0" o "x**2 - 5*x + 6 = 0".
     """
     lhs = eq.lhs
     rhs = eq.rhs
@@ -115,28 +153,24 @@ def _factor_expression(eq: Eq) -> str:
     expr = simplify(lhs - rhs)
     factored = factor(expr)
 
-    # Si no hay cambio, igual devolvemos la forma factorizada como LaTeX-like
-    # Nota: usamos str(...) como aproximación; más adelante podemos usar sympy.latex
+    # Si factor() no cambió nada, devolvemos la forma original
     if str(factored) == str(expr):
-        # no factoriza mejor, devolvemos algo tipo "x^2 - 5x + 6 = 0"
         return f"{str(expr)} = 0"
     else:
-        # ejemplo "(x - 2)*(x - 3) = 0"
         return f"{str(factored)} = 0"
 
 
 def _to_latex_clean(eq: Eq) -> str:
     """
-    Representación limpia tipo "x^2 - 5x + 6 = 0" para que fluya en los pasos.
-    Para ahora usamos str(...) por simplicidad.
-    Más adelante podemos usar sympy.latex(eq) para código LaTeX perfecto.
+    Representación amigable de la ecuación original para mostrar/la respuesta JSON.
+    Por ahora devolvemos str() normal de SymPy.
     """
     return f"{str(eq.lhs)} = {str(eq.rhs)}"
 
 
-def _to_solution_strings(solutions: List[Eq]) -> List[str]:
+def _to_solution_strings(solutions: List[Relational]) -> List[str]:
     """
-    Convierte [Eq(x,2), Eq(x,3)] -> ["x = 2", "x = 3"] como strings.
+    Convierte [Eq(x,2), Eq(x,3)] -> ["x = 2", "x = 3"].
     """
     out = []
     for sol in solutions:
@@ -149,29 +183,25 @@ def _to_solution_strings(solutions: List[Eq]) -> List[str]:
 
 def solve_problem(problem_text: str, input_format: str) -> Dict:
     """
-    Punto de entrada usado por el endpoint /solve.
-
+    Función principal llamada por /solve.
     Retorna dict con:
-    - latex_clean (string representable)
-    - solution (lista de strings tipo "x = 2")
-    - problem_type ("quadratic", "linear", "generic"... best-effort)
-    - validated (bool)
-    - factored_form (string tipo "(x-2)*(x-3) = 0")
+    - latex_clean: str
+    - solution: List[str]
+    - problem_type: str
+    - validated: bool
+    - factored_form: str
     """
 
-    # 1. Parsear y construir Eq(lhs, rhs)
+    # 1. Construir ecuación simbólica
     eq, vars_candidates = _to_equation(problem_text, input_format)
 
-    # 2. Resolver
+    # 2. Resolver para la variable principal
     raw_solutions = _solve_equation(eq, vars_candidates)
 
-    # 3. Validar
+    # 3. Validar sustituyendo
     is_valid = _validate_solutions(eq, raw_solutions)
 
-    # 4. Clasificar tipo de problema (simple heuristic)
-    #    - si el grado (polinomio en 1 variable) es 1 -> linear
-    #    - grado 2 -> quadratic
-    #    - otro -> generic
+    # 4. Heurística de tipo de problema (lineal, cuadrática, cúbica...)
     problem_type = "generic"
     try:
         if len(vars_candidates) == 1:
@@ -185,20 +215,19 @@ def solve_problem(problem_text: str, input_format: str) -> Dict:
             elif poly_degree == 3:
                 problem_type = "cubic"
     except Exception:
-        # si no podemos sacar grado, lo dejamos en generic
         pass
 
-    # 5. Factorización (para builder)
+    # 5. Factorización útil para pasos
     factored_form = _factor_expression(eq)
 
-    # 6. Limpio para mostrar
+    # 6. Convertir a strings utilizables en el pipeline
     latex_clean = _to_latex_clean(eq)
     solution_strings = _to_solution_strings(raw_solutions)
 
     return {
-        "latex_clean": latex_clean,                 # ej "x**2 - 5*x + 6 = 0"
-        "solution": solution_strings,               # ej ["x = 2", "x = 3"]
-        "problem_type": problem_type,               # ej "quadratic"
-        "validated": is_valid,                      # ej True
-        "factored_form": factored_form              # ej "(x - 2)*(x - 3) = 0"
+        "latex_clean": latex_clean,
+        "solution": solution_strings,
+        "problem_type": problem_type,
+        "validated": is_valid,
+        "factored_form": factored_form
     }
